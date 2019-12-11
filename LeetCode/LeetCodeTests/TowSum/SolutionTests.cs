@@ -1,5 +1,7 @@
-﻿using LeetCode.TowSum;
+﻿using System;
+using LeetCode.TowSum;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.TowSum.Tests
@@ -56,6 +58,64 @@ namespace LeetCode.TowSum.Tests
             public int Target;
         }
 
-       
+        [TestMethod()]
+        public void RemoveDuplicatesTest()
+        {
+            var sln = new Solution();
+            var data = new[] { 1 };
+            var rst = sln.RemoveDuplicates(data);
+            Assert.AreEqual(rst, data.Distinct().Count());
+
+            data = new[] { 1, 1, 2 };
+            rst = sln.RemoveDuplicates(data);
+            Assert.AreEqual(rst, data.Distinct().Count());
+
+            data = new[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+            rst = sln.RemoveDuplicates(data);
+            Assert.AreEqual(rst, data.Distinct().Count());
+        }
+
+        [TestMethod()]
+        public void RemoveElementTest()
+        {
+            var sln = new Solution();
+
+            var data = new[] { 1 };
+            var rst = sln.RemoveElement(data, 3);
+            Assert.AreEqual(rst, 1);
+
+            data = new[] { 1 };
+            rst = sln.RemoveElement(data, 1);
+            Assert.AreEqual(rst, 0);
+
+            data = new[] { 3, 2, 2, 3 };
+            rst = sln.RemoveElement(data, 3);
+            Assert.AreEqual(rst, 2);
+
+            data = new[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+            rst = sln.RemoveElement(data, 2);
+            Assert.AreEqual(rst, 5);
+        }
+
+        [TestMethod()]
+        public void SearchInsertTest()
+        {
+            var sln = new Solution();
+            var data = new[] { 1, 3, 5, 6 };
+            var rst = sln.SearchInsert(data, 5);
+            Assert.AreEqual(rst, 2);
+
+            data = new[] { 1, 3, 5, 6 };
+            rst = sln.SearchInsert(data, 2);
+            Assert.AreEqual(rst, 1);
+
+            data = new[] {1, 3, 5, 6};
+            rst = sln.SearchInsert(data, 7);
+            Assert.AreEqual(rst, 4);
+
+            data = new[] {1, 3, 5, 6};
+            rst = sln.SearchInsert(data, 0);
+            Assert.AreEqual(rst, 0);
+        }
     }
 }
