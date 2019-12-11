@@ -84,7 +84,6 @@ namespace LeetCode.TowSum
             return index;
         }
 
-
         /// <summary>
         /// #35
         /// </summary>
@@ -103,5 +102,34 @@ namespace LeetCode.TowSum
             }
             return fi;
         }
+
+        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            ListNode root = new ListNode(0);
+            ListNode cursor = root;
+            int up = 0;
+            while (l1 != null || l2 != null || up != 0)
+            {
+                var sumVal = l1?.val ?? 0 + l2?.val ?? 0 + up;
+                var val = sumVal / 10;
+
+                ListNode sumNode = new ListNode(sumVal % 10);
+                cursor.next = sumNode;
+                cursor = sumNode;
+
+
+                if (l1 != null) l1 = l1.next;
+                if (l2 != null) l2 = l2.next;
+            }
+
+            return root;
+        }
+    }
+
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) { val = x; }
     }
 }
