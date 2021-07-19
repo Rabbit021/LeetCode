@@ -5,4 +5,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Top100\Readme.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Top100\Readme.txt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Readme.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
 </Project>
